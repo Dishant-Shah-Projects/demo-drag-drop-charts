@@ -2,12 +2,16 @@ import React from 'react';
 import { useDrag } from 'react-dnd';
 
 function Item(props) {
+  const {setMenuId,menuId} = props;
+  console.log(props);
   const [{ isDragging }, dragRef] = useDrag(() => ({
     type: 'card',
-    drag: () => props.setMenuId(props.menuId),
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),      
-    }),
+    collect: (monitor) => {
+      setMenuId(menuId);
+      return ({
+      isDragging: monitor.isDragging(),   
+
+    })},
   }));
   console.log(props)
 
@@ -15,7 +19,7 @@ function Item(props) {
       
     <>      
         <div ref={dragRef} >
-          <p>This is Item {props.isMoved}</p>
+          <p>This is Item {props.menuId}</p>
         </div>
     </>
   );

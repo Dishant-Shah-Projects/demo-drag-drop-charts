@@ -22,16 +22,21 @@ import { useDrop } from 'react-dnd';
 // };
 
 function GoogleChart (props) {
+    console.log(props);
     const [parsedCsvData, setParsedCsvData] = useState([]);
-    const [{ isOver }, dropRef] = useDrop(() => ({
+    const [{ isOver, menuId }, dropRef] = useDrop(() => ({
         accept: 'card',
         drop: () => loadCsv(),
-        collect: (monitor) => ({
+        collect: (monitor) => {
+            console.log(monitor);
+            return ({
           isOver: monitor.isOver(),
-        }),
+          menuId: monitor.menuId,   
+        })},
       }));
-
+    
     const loadCsv = () => {
+        console.log(menuId);
         console.log(props.menuId);
         Papa.parse(csvFile, {
             download:true,
