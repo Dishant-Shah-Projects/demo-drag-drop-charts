@@ -32,7 +32,7 @@ function GoogleChart (props) {
       }));
 
     const loadCsv = () => {
-        console.log(props.menuId)
+        console.log(props.menuId);
         Papa.parse(csvFile, {
             download:true,
             complete: results => {

@@ -4,13 +4,8 @@ import { useDrag } from 'react-dnd';
 import Item from './Item.jsx';
 
 function Nav(props) {
-  const [menuId, setMenuId] = useState(null);
-  //   const [{ isDragging }, dragRef] = useDrag(() => ({
-  //     type: 'card',
-  //     collect: (monitor) => ({
-  //       isDragging: monitor.isDragging(),
-  //     }),
-  //   }));
+  const { menuId, setMenuId } = props;
+
   function moveMenuItem(id) {
     setMenuId(id);
   }
@@ -25,18 +20,9 @@ function Nav(props) {
           height: '100%',
         }}
       >
-        <Item
-          isMoved={menuId === 1}
-          moveMenuItem={moveMenuItem.bind(null, 1)}
-        />
-        <Item
-          isMoved={menuId === 2}
-          moveMenuItem={moveMenuItem.bind(null, 2)}
-        />
-        <Item
-          isMoved={menuId === 3}
-          moveMenuItem={moveMenuItem.bind(null, 3)}
-        />
+        <Item isMoved={menuId === 1} menuId={1} setMenuId={moveMenuItem} />
+        <Item isMoved={menuId === 2} menuId={2} setMenuId={moveMenuItem} />
+        <Item isMoved={menuId === 3} menuId={3} setMenuId={moveMenuItem} />
       </div>
     </>
   );

@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="App">
-      <Nav menuId={menuId} />
+      <Nav menuId={menuId} setMenuId={setMenuId} />
       <GoogleChart menuId={menuId} />
     </div>
     // <div className="app">
